@@ -3,12 +3,13 @@
 #include <string.h>
 #include "Stack.h"
 
+#define MAX_ARRAY 100
 
 void Infix_To_Post(Stack *ps, StackEntry *pe);
 int precedence(char sympol);
 
-char infix[MAXSTACK];
-char Post[MAXSTACK];
+char infix[MAX_ARRAY];
+char Post[MAX_ARRAY];
 
 int main() {
     printf("Please Enter infix expression  -->  ");

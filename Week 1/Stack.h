@@ -2,7 +2,7 @@
 #define STACK
 
 
-#define MAXSTACK 100
+#define MAXSTACK 4
 typedef char StackEntry;
 
 typedef struct stack{
