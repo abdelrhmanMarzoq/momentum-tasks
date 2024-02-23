@@ -88,6 +88,7 @@ void Infix_To_Post(Stack *ps, StackEntry *pe)
                     {
                         Pop(ps, pe);
                         Post[j++] = *pe;
+                        if(!StackEmpty(ps)) StackTop(ps, pe);
                     }
                     Push(ps, sympol);
                     break;
