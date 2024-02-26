@@ -36,12 +36,12 @@ void Destroy_List(List *pl)
     pl->Size = 0;
 }
 
-boolean List_Insert(List *pl, ListEntry e,int pos)
+void List_Insert(List *pl, ListEntry e, int pos)
 {
     ListNode *pq, *q;
     int i;
     pq = (ListNode *)malloc(sizeof(ListNode));
-    if(NULL != pq)
+    if (NULL != pq && pos>=0 && pos<=pl->Size)
     {
         pq->entry = e;
         pq->next = NULL;
@@ -60,54 +60,62 @@ boolean List_Insert(List *pl, ListEntry e,int pos)
             q->next = pq;
         }
         pl->Size++;
-        return 1;
+
     }
     else
     {
-        return 0;
+
     }
 }
 
-void List_Delete(List *pl, ListEntry *pe,int pos)
+boolean List_Delete(List *pl, ListEntry *pe,int pos)
 {
     ListNode *temp, *q;
     int i;
-    if (pos == 0)
+    if(pos>=0 && pos<pl->Size)
     {
-        *pe = pl->head->entry;
-        temp = pl->head;
-        pl->head = pl->head->next;
-        free(temp);
-    }
-    else
-    {
-        for (q = pl->head,i = 0; i < (pos-1); i++)
+        if (pos == 0)
         {
-            q = q->next;
+            *pe = pl->head->entry;
+            temp = pl->head;
+            pl->head = pl->head->next;
+            free(temp);
         }
-        temp = q->next;
-        q->next = temp->next;
-        *pe = temp->entry;
-        free(temp);
+        else
+        {
+            for (q = pl->head,i = 0; i < (pos-1); i++)
+            {
+                q = q->next;
+            }
+            temp = q->next;
+            q->next = temp->next;
+            *pe = temp->entry;
+            free(temp);
+        }
+
+        pl->Size--;
     }
-    pl->Size--;
 }
 
 void List_Retrieve(List *pl, ListEntry *pe,int pos)
 {
     ListNode *q;
     int i;
-    for (q = pl->head, i = 0; i < pos; i++)
+    if(pos>=0 && pos<pl->Size)
     {
-        q = q->next;
+        for (q = pl->head, i = 0; i < pos; i++)
+        {
+            q = q->next;
+        }
+        *pe = q->entry;
     }
-    *pe = q->entry;
 }
 
 void List_Replace(List *pl, ListEntry e,int pos)
 {
     ListNode *q;
     int i;
+    if (pos>=0 && pos<pl->Size)
     for (q = pl->head, i = 0; i < pos; i++)
     {
         q = q->next;
