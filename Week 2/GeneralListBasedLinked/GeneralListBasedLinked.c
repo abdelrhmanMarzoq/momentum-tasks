@@ -68,7 +68,7 @@ void List_Insert(List *pl, ListEntry e, int pos)
     }
 }
 
-boolean List_Delete(List *pl, ListEntry *pe,int pos)
+boolean List_Delete(List *pl, ListEntry *pe, int pos)
 {
     ListNode *temp, *q;
     int i;
@@ -97,7 +97,7 @@ boolean List_Delete(List *pl, ListEntry *pe,int pos)
     }
 }
 
-void List_Retrieve(List *pl, ListEntry *pe,int pos)
+void List_Retrieve(List *pl, ListEntry *pe, int pos)
 {
     ListNode *q;
     int i;
@@ -111,14 +111,16 @@ void List_Retrieve(List *pl, ListEntry *pe,int pos)
     }
 }
 
-void List_Replace(List *pl, ListEntry e,int pos)
+void List_Replace(List *pl, ListEntry e, int pos)
 {
     ListNode *q;
     int i;
     if (pos>=0 && pos<pl->Size)
-    for (q = pl->head, i = 0; i < pos; i++)
     {
-        q = q->next;
+        for (q = pl->head, i = 0; i < pos; i++)
+        {
+            q = q->next;
+        }
+        q->entry = e;
     }
-    q->entry = e;
 }

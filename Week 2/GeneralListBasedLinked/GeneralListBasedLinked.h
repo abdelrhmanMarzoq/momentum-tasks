@@ -11,8 +11,8 @@ typedef struct listNode{
 }ListNode;
 
 typedef struct {
-    ListNode *head;
-    int Size;
+    ListNode *head ,*CurrentNode;
+    int Size ,CurrentPos;
 }List;
 
 void List_init(List *pl);
@@ -25,12 +25,12 @@ int List_Size(List *pl);
 
 void Destroy_List(List *pl);
 
-void List_Insert(List *pl, ListEntry e,int pos);
+void List_Insert(List *pl, ListEntry e, int pos);
 
-boolean List_Delete(List *pl, ListEntry *pe,int pos);
+boolean List_Delete(List *pl, ListEntry *pe, int pos);
 
-void List_Retrieve(List *pl, ListEntry *pe,int pos);
+void List_Retrieve(List *pl, ListEntry *pe, int pos);
 
-void List_Replace(List *pl, ListEntry e,int pos);
+void List_Replace(List *pl, ListEntry e, int pos);
 
 #endif // GENERAL_LIST
