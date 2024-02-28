@@ -1,7 +1,7 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
-
+typedef char boolean;
 
 typedef struct node{
     unsigned int NodeData;
@@ -13,7 +13,7 @@ typedef struct{
     Node *ListHead;
 }List;
 
-typedef char boolean;
+
 
 
 void Init_List (List *pl);
@@ -34,6 +34,7 @@ boolean List_Delete(List *pl, int *pe, unsigned int pos);
 
 int Size_List(List *pl);
 
+void List_Traverse(List *pl, void (*Visit)(int));
 
 
 

@@ -144,3 +144,20 @@ int Size_List(List *pl)
 {
     return pl->Size;
 }
+
+
+void List_Traverse(List *pl, void (*Visit)(int))
+{
+    Node *Traverse = pl->ListHead;
+    if (Traverse != NULL)
+    {
+        while(Traverse != NULL)
+        {
+            Visit(Traverse->NodeData);
+            Traverse = Traverse->NodeLink;
+        }
+    }
+    else
+    {
+    }
+}
